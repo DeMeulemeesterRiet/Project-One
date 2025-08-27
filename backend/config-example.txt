@@ -1,0 +1,9 @@
+[connector_python]
+user = user_name
+host = 127.0.0.1
+port = 3306
+password = CHANGE_ME
+database = demo_change_me
+
+[application_config]
+driver = 'SQL Server'

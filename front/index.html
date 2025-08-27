@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>index</title>
+    <link rel="stylesheet" href="style/screen.css">
+    <script src="https://cdn.socket.io/4.6.0/socket.io.min.js"
+        integrity="sha384-c79GN5VsunZvi+Q/WObgk2in0CbZsHnjEqvFxC5DxHn9lTfNce2WW6h2pH6u/kF+"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script src="script/datahandler.js"></script>
+    <script src="script/app.js"></script>
+</head>
+
+<body class="js-inloggen">
+    <nav>
+        <div class="c-nav o-container">
+            <p class="u-logo">De Tafelkampioen</p>
+            <ul class="c-nav__list">
+                <li class="c-nav__item">
+                    <a href="historiek.html" class="c-nav__link c-button btn btn-success ">Historiek</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <div class="o-container">
+            <div>
+                <div>
+                    <label for="txtUsername">Gebruikersnaam: </label>
+                    <input type="text" class="form-control js-user" id="txtUsername">
+                </div>
+            </div>
+            <div>
+                <div>
+                    <label for="txtPassword" class="form-label">Wachtwoord: </label>
+                    <input type="password" class="form-control js-password" id="txtPassword">
+                </div>
+            </div>
+            <div>
+                <div>
+                    <button class="btn btn-primary js-button-generate">Inloggen</button>
+                    <!-- <button class="btn btn-danger js-button-reset">Reset</button> -->
+                    <!-- <button class="btn btn-warning js-button-protected">Protected endpoint home</button> -->
+                </div>
+                <div style="overflow-wrap: anywhere" class="js-result"></div>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>

@@ -1,0 +1,699 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+
+
+//
+// Media Query mixin
+// @include mq(#point, #query1, #query2);
+//
+
+@mixin mq($breakpoint, $query1: min, $query2: width) {
+  $query: map-get($breakpoints, $breakpoint);
+
+  @if $query !=null {
+    @media (#{$query1}-#{$query2}: #{$query}) {
+      @content;
+    }
+  }
+
+  @else {
+    @media (#{$query1}-#{$query2}: $breakpoint) {
+      @content;
+    }
+  }
+}
+
+/*---------------------------------------/*
+ # SETTINGS
+/*---------------------------------------*/
+// $dark-yellow: #ffdb55;
+// $bg-color: #aecad8;
+// $btn-color: #38434a;
+// $btn-color-hover: #414e56;
+
+$color-green-0: #F1F9EC;
+$color-green-1: #E1F2D5;
+$color-green-2: #C6E6B0;
+$color-green-3: #A3D483;
+$color-green-4: #83C15A;
+$color-green-5: #5F9938;
+$color-green-6: #4F832D;
+$color-green-7: #3F6526;
+$color-green-8: #365322;
+$color-green-9: #2F4A1D;
+$color-green-10: #17250E;
+$color-gray-green-0: #F7FAF5;
+$color-gray-green-1: #EEF2EB;
+$color-gray-green-2: #DFE5DA;
+$color-gray-green-3: #C0CCB8;
+$color-gray-green-4: #A8B2A1;
+$color-gray-green-5: #90998A;
+$color-gray-green-6: #788073;
+$color-gray-green-7: #60665C;
+$color-gray-green-8: #484D45;
+$color-gray-green-9: #30332E;
+$color-gray-green-10: #181A17;
+$color-rood: #F2D8D5;
+$color-rood-dark:#8C4D46;
+
+
+
+$h1-font-size: 2.125rem;
+$h1-font-weight: 700;
+$h1-line-height: 2.5rem;
+
+$h2-font-size: 1.4375rem;
+$h2-font-weight: 700;
+$h2-line-height: 2rem;
+
+$h3-font-size: 1.125rem;
+$h3-font-weight: 700;
+$h3-line-height: 1.5rem;
+
+$body-tekst-font-size: 1rem;
+$body-tekst-font-weight: 500;
+$body-tekst-line-height: 1.5rem;
+
+$body-strong-font-size: 1rem;
+$body-strong-font-weight: 700;
+$body-strong-line-height: 1.5rem;
+
+
+@keyframes move-left {
+  0% {
+    transform: none;
+  }
+
+  65% {
+    transform: translateX(-80px);
+  }
+
+  100% {
+    transform: translateX(-80px);
+  }
+}
+
+@keyframes move-right {
+  0% {
+    transform: none;
+  }
+
+  65% {
+    transform: translateX(80px);
+  }
+
+  100% {
+    transform: translateX(80px);
+  }
+}
+
+@keyframes move-up {
+  100% {
+    bottom: 100.75px;
+  }
+}
+
+@keyframes move-down {
+  100% {
+    top: 100.75px;
+  }
+}
+
+@keyframes width-to-zero {
+  0% {
+    width: 50px;
+  }
+
+  100% {
+    width: 11px;
+  }
+}
+
+
+
+// ---
+// Breakpoints
+// ---
+
+$breakpoints: (
+  bp1: calc(577 / 16 * 1em),
+  bp2: calc(769 / 16 * 1em),
+  bp3: calc(993 / 16 * 1em),
+  bp4: calc(1201 / 16 * 1em),
+  bp5: calc(1401 / 16 * 1em),
+  ) !default;
+
+// ---
+// Grid
+// ---
+
+// Define the amount of columns in the grid
+$columns: (
+  2,
+  3,
+  4,
+  5,
+  6,
+  7,8,9, 10, 11, 12, 13 ,14, 15) !default;
+
+/*---------------------------------------/*
+ # GENERIC
+/*---------------------------------------*/
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+/*---------------------------------------/*
+ # ELEMENTS
+/*---------------------------------------*/
+body,
+html {
+  height: 100%;
+  width: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  transition: all 0.14s ease-in;
+  font-family: 'Nunito',
+    Helvetica,
+    sans-serif;
+  font-size: $body-tekst-font-size;
+  font-weight: $body-tekst-font-weight;
+  line-height: $body-tekst-line-height;
+}
+
+nav {
+  background-color: white;
+  border-bottom: 1px solid $color-green-2;
+}
+
+footer {
+  background-color: $color-green-2;
+}
+
+table {
+  width: 100%;
+}
+
+tbody {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+  align-self: stretch;
+
+  @include mq(bp2) {
+    gap: 1.5rem;
+
+    @include mq(bp3) {}
+  }
+}
+
+
+/*---------------------------------------/*
+ # OBJECTS
+/*---------------------------------------*/
+.o-container {
+  // display: flex;
+  // align-items: center;
+  // justify-content: center;
+  // height: 100vh;
+  // width: 100vw;
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 0 2rem; // bij verkleinen van scherm blijft er altijd 2 rem afstand van de zijkanten
+}
+
+.o-100{
+  width: 100%;
+}
+/*---------------------------------------/*
+ # COMPONENTS
+/*---------------------------------------*/
+.c-flex {
+  display: flex;
+  flex-wrap: wrap;
+}
+.c-flex-basis {
+  flex-basis:100%;
+  // align-self: stretch;
+}
+
+
+.c-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 2rem;
+  // margin-bottom: 1rem;
+
+  @media (max-width: 576px) {
+    flex-direction: column;
+  }
+
+  &__list {
+    display: flex;
+    list-style: none;
+    gap: 1rem;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__link {
+    color: black;
+    text-decoration: none;
+    transition: 0.3s;
+
+    // &:hover,
+    // &--active {
+    //   color: $color-green-7;
+    // }
+
+    &--active {
+      font-weight: bold;
+    }
+
+  }
+}
+
+.c-main {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 2.5rem 1.5rem;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 2rem;
+
+  @include mq(bp2) {
+    padding: 3rem 1.5rem;
+    gap:3rem;
+
+    @include mq(bp3) {
+      padding: 4rem 2rem;
+      flex-direction: row;
+
+    }
+  }
+}
+
+.c-footer {
+  margin-top: 4rem;
+  padding: 1rem;
+  text-align: center;
+}
+
+.c-card {
+  display: flex;
+  gap: 1.5rem;
+  flex-direction: column;
+  align-items: flex-start;
+  border-radius: 2.5rem;
+  border-width: 1px;
+  border-style: solid;
+  border-color: $color-gray-green-3;
+  padding: 2rem;
+  
+  @include mq(bp2) {
+    padding: 3rem 2.5rem;
+    gap: 2rem;
+    border-radius: 3.5rem;
+
+    @include mq(bp3) {}
+
+  }
+}
+
+.c-card__welkom {
+  background-color: $color-green-0;
+  justify-content: center;
+  gap: 2rem;
+
+  @include mq(bp2) {
+    padding: 3rem;
+
+    @include mq(bp3) {}
+  }
+}
+
+.c-welkom-tekst {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  align-self: start;
+
+  @include mq(bp2) {
+    align-self: stretch;
+
+    @include mq(bp3) {}
+  }
+}
+
+.c-welkom-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.5rem;
+  align-self: stretch;
+
+  @include mq(bp2) {
+    flex-direction: row;
+    gap: 2rem;
+    align-self: stretch;
+
+    @include mq(bp3) {}
+  }
+}
+
+.c-welkom-info__blok {
+  display: flex;
+  padding: 1rem;
+  justify-content: space-between;
+  align-items: center;
+  align-self: stretch;
+  border-radius: 0.5rem;
+  background-color: $color-green-2;
+
+  @include mq(bp2) {
+    padding: 1.5rem;
+    flex: 1 0 0;
+
+    @include mq(bp3) {}
+  }
+}
+
+.c-tabel-body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+  align-self: stretch;
+
+  @include mq(bp2) {
+    gap: 1.5rem;
+
+    @include mq(bp3) {}
+  }
+}
+
+
+.c-row {
+  display: flex;
+  padding: 0.5rem;
+  justify-content: space-around;
+  align-items: flex-start;
+  align-self: stretch;
+  border-radius: 0.5rem;
+}
+
+.c-row__oefensessie {
+  border: 1px solid $color-gray-green-3
+}
+
+.c-row__oefening {
+  align-content: flex-start;
+  align-self: stretch;
+  row-gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.c-row__oefening--juist {
+  background-color: $color-green-1;
+}
+
+.c-row__oefening--fout {
+  background-color: $color-rood;
+}
+
+.c-normal-left{
+  display: flex;
+  flex-direction: column;
+  align-items:stretch;
+  gap: 3rem;
+}
+.c-oefeningen-normaal{
+  @include mq(bp3, max) {
+      display: none;
+    }
+}
+.c-oefeningen-small{
+  @include mq(bp3, min) {
+      display: none;
+    }
+}
+
+.c-top__link {
+  background-color: rgba(0, 0, 0, 0.8);
+color: #fff;
+text-transform: uppercase;
+font-weight: bold;
+padding: 1rem;
+border-radius: 1rem;
+display: inline-block;
+text-decoration: none;
+position: fixed;
+bottom: 3rem;
+right: 3rem;
+}
+
+.c-button {
+  background-color: $color-green-0;
+  text-decoration: none;
+  font-family: 'Nunito',
+    Helvetica,
+    sans-serif;
+  font-size: $body-strong-font-size;
+  font-weight: $body-strong-font-weight;
+  line-height: $body-strong-line-height;
+  color: $color-green-7;
+  border: none;
+  padding: 0.5rem 1rem;
+
+}
+
+.c-button__red{
+  background-color: $color-rood;
+  color: $color-rood-dark;
+
+}
+.c-oefeningen-heading {
+  border-bottom: 1px solid $color-gray-green-3;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.5rem;
+  align-self: stretch;
+
+  @include mq(bp2) {
+
+    @include mq(bp3) {
+      justify-content: center;
+    }
+  }
+}
+
+.c-oefeningen-top {
+  display: flex;
+  padding: 0rem 0.5rem;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.c-oefeningen-info {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 1.5rem;
+  border-radius: 0.5rem;
+
+}
+
+.c-oefeningen-tabel-heading {
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  align-self: stretch;
+
+  // @include mq(bp2) {
+
+
+  //   @include mq(bp3) {
+
+  //   }
+  // }
+}
+
+.c-oefeningen-tabel-heading__small {
+  @include mq(bp2, min) {
+    display: none;
+  }
+}
+
+.c-oefeningen-tabel-heading__normal {
+  @include mq(bp2, max) {
+    display: none;
+  }
+}
+
+
+.c-top__link:hover {
+  background-color: rgba(36, 36, 36, 0.8);
+}
+
+
+.js-chart {
+  width: 100%;
+  // width: 620px;
+}
+
+/*---------------------------------------/*
+ # UTILITIES
+/*---------------------------------------*/
+
+/* body.u-active {
+  background: #f3f7f9;
+} */
+/*# sourceMappingURL=screen.css.map */
+
+.u-logo {
+  font-size: $h3-font-size;
+  font-weight: $h3-font-weight;
+  line-height: $h3-line-height;
+
+  @include mq(bp2) {
+    font-size: $h2-font-size;
+    font-weight: $h2-font-weight;
+    line-height: $h2-line-height;
+
+    @include mq(bp3) {}
+  }
+
+}
+
+.u-welkom-naam {
+  font-size: $h2-font-size;
+  font-weight: $h2-font-weight;
+  line-height: $h2-line-height;
+
+  @include mq(bp2) {
+    font-size: $h1-font-size;
+    font-weight: $h1-font-weight;
+    line-height: $h1-line-height;
+
+    @include mq(bp3) {}
+  }
+}
+
+.u-welkom-terug {
+  font-size: $body-strong-font-size;
+  font-weight: $body-strong-font-weight;
+  line-height: $body-strong-line-height;
+
+  @include mq(bp2) {
+    font-size: $h3-font-size;
+    font-weight: $h3-font-weight;
+    line-height: $h3-line-height;
+
+    @include mq(bp3) {}
+  }
+}
+
+.u-infoblok-getal {
+  flex: 1 0 0;
+  text-align: center;
+  font-size: $h2-font-size;
+  font-weight: $h2-font-weight;
+  line-height: $h2-line-height;
+
+  @include mq(bp2) {
+    font-size: $h1-font-size;
+    font-weight: $h1-font-weight;
+    line-height: $h1-line-height;
+
+    @include mq(bp3) {}
+  }
+}
+
+.u-infoblok-tekst {
+  flex: 1 0 0;
+  font-size: $body-tekst-font-size;
+  font-weight: $body-tekst-font-weight;
+  line-height: $body-tekst-line-height;
+
+  @include mq(bp2) {
+    font-size: $body-strong-font-size;
+    font-weight: $body-strong-font-weight;
+    line-height: $body-strong-line-height;
+
+    @include mq(bp3) {}
+  }
+}
+
+.u-card-titel {
+  font-size: $h3-font-size;
+  font-weight: $h3-font-weight;
+  line-height: $h3-line-height;
+
+  @include mq(bp2) {
+    font-size: $h2-font-size;
+    font-weight: $h2-font-weight;
+    line-height: $h2-line-height;
+
+    @include mq(bp3) {}
+  }
+}
+
+/*
+    Utilities: Widths
+    ---
+    Width utility classes
+*/
+
+// Loop through the different columns
+@each $column in $columns {
+
+  // Generate the grid classes
+  @each $denominator, $numerator in $column {
+
+    // Begin creating a numerator for our fraction up until we hit the
+    // denominator.
+    @for $numerator from 1 through $denominator {
+
+      // Build a class in the format `.u-4-of-6`
+      .u-#{$numerator}-of-#{$denominator} {
+        flex-basis: calc(($numerator / $denominator) * 100%) !important;
+      }
+    }
+  }
+}
+
+// Loop through the different breakpoints
+@each $breakpoint, $value in $breakpoints {
+  @include mq($value) {
+
+    // Loop through the different columns
+    @each $column in $columns {
+
+      // Generate the grid classes
+      @each $denominator, $numerator in $column {
+
+        // Begin creating a numerator for our fraction up until we hit the
+        // denominator.
+        @for $numerator from 1 through $denominator {
+
+          // Build a class in the format `.u-4-of-6-bp1`
+          .u-#{$numerator}-of-#{$denominator}-#{$breakpoint} {
+            flex-basis: calc(($numerator / $denominator) * 100%) !important;
+          }
+        }
+      }
+    }
+  }
+}
